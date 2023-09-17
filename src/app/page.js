@@ -1,113 +1,117 @@
-import Image from 'next/image'
+"use client";
+// import OpenAI from "openai";
 
-export default function Home() {
+import { useEffect, useState } from "react";
+import $ from 'jquery';
+import About from "@/lib/about";
+
+
+function Homepage() {
+  // const openai = new OpenAI({
+  //   apiKey: process.env.OPENAI_API_KEY,
+  //   dangerouslyAllowBrowser: true,
+  // });
+
+  // const chatCompletion = openai.chat.completions.create({
+  //   messages: [{ role: "user", content: "Say this is a test" }],
+  //   model: "gpt-3.5-turbo",
+  // });
+  // console.log(chatCompletion);
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scroll = window.scrollY;
+      if (scroll > 20) {
+        // Code to execute when scroll is greater than 20
+        $("#upper-navbar").removeClass("!bg-transparent");
+        $("#upper-navbar").addClass("!bg-slate-800 shadow-lg");
+      } else {
+        // Code to execute when scroll is not greater than 20
+        $("#upper-navbar").removeClass("!bg-slate-800 shadow-lg");
+      }
+
+      if (scroll > 30) {
+        $('#about-btn').addClass("text-blue-400 border-blue-400");
+      } else {
+        $('#about-btn').removeClass("text-blue-400 border-blue-400");
+      }
+    };
+
+    // Check initial scroll position when component mounts
+    const initialScroll = window.scrollY;
+    if (initialScroll > 20) {
+      // Code to execute when initial scroll is greater than 20
+      $("#upper-navbar").addClass("!bg-slate-800");
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="">
+      <div
+        className="absolute top-0 w-[100%] h-[50rem]"
+        style={{
+          backgroundImage: `url("/images/ai7.jpg")`,
+          // backgroundImage: `url("https://cdn.discordapp.com/attachments/1145357585365618720/1151170695179542538/ai7.jpg")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="w-full h-full bg-gradient-to-b from-transparent from-60% to-slate-800"></div>
+      </div>
+      <div className="flex flex-col mt-[3.5rem] mx-[14rem] relative z-[3]">
+        <div className="flex">
+          <div className="flex flex-col justify-center items-start h-[50rem] w-full">
+            <div className="flex flex-col gap-3">
+              <h1 className="text-[3rem] font-bold">Feeling Lonely? </h1>
+              <p className="font-semibold text-[1.2rem]">Chat with AI is all you need.</p>
+            </div>
+            <div className="flex flex-col gap-3 ps-10">
+              <h1 className="text-[3rem] font-bold">Need Some Help? </h1>
+              <p className="font-semibold text-[1.2rem]">Chat with AI is here to help.</p>
+            </div>
+            <div className="flex flex-col gap-3 ps-20">
+              <h1 className="text-[3rem] font-bold">Want creativity? </h1>
+              <p className="font-semibold text-[1.2rem]">Chat with AI makes it happen.</p>
+            </div>
+          </div>
+          <div className="flex flex-col p-20 w-full">
+            <div className="flex gap-x-3">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="bg-slate-700 bg-opacity-70 w-full min-h-[3rem] outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
+                onFocus={() => {
+                  // Add logic here to show/hide the search content
+                  document.getElementById("search-content").style.display = "block";
+                }}
+                onBlur={() => {
+                  // Add logic here to show/hide the search content
+                  document.getElementById("search-content").style.display = "none";
+                }}
+              />
+              <button className="pe-4">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+
+            <div id="search-content" className="w-full h-[30rem] rounded-xl bg-slate-700 bg-opacity-75 my-4 overflow-y-hidden">
+
+            </div>
+          </div>
         </div>
+
+
+        <About />
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   )
 }
+
+export default Homepage
