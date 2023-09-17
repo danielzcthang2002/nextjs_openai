@@ -57,7 +57,6 @@ function Homepage() {
         className="absolute top-0 w-[100%] h-[50rem]"
         style={{
           backgroundImage: `url("/images/ai7.jpg")`,
-          // backgroundImage: `url("https://cdn.discordapp.com/attachments/1145357585365618720/1151170695179542538/ai7.jpg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
