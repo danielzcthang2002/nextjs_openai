@@ -63,7 +63,7 @@ function Homepage() {
       >
         <div className="w-full h-full bg-gradient-to-b from-transparent from-60% to-slate-800"></div>
       </div>
-      <div className="flex flex-col mt-[3.5rem] mx-[14rem] relative z-[3]">
+      <div className="container flex flex-col mt-[3.5rem] mx-[14rem] relative z-[3]">
         <div className="flex">
           <div className="flex flex-col justify-center items-start h-[50rem] w-full">
             <div className="flex flex-col gap-3">

@@ -7,20 +7,20 @@ function About (){
   <div className="flex justify-center items-center text-[1.5rem] py-5 w-[50%]">
     <i>Empowering the Future with Artificial Intelligence </i>
   </div>
-  <div className="grid grid-cols-2 grid-rows-1 justify-center items-center w-full my-4 pb-5">
+  <div className="grid grid-cols-2 grid-rows-1 w-full my-4 pb-5">
     <div className="flex flex-col gap-4 text-center col-span-1 w-full">
       <h1 className='text-[1.5rem] font-bold uppercase'>Our Slogan</h1>
       <p className="text-[1.25] italic">AI is everywhere already. </p>
       <p className="text-[1.25] italic">Let&apos;s use it for good.</p>
     </div>
-    <div className="flex flex-col gap-4 text-center col-span-1 w-full">
+    <div className="flex flex-col items-center gap-4 text-center col-span-1 w-full">
       <h1 className='text-[1.5rem] font-bold uppercase'>Our Mission</h1>
-      <p className="text-[1.25] italic">Our mission is to harness the power of artificial intelligence to solve complex problems and enhance human experiences. We are committed to advancing technology and making it accessible to everyone.</p>
+      <p className="text-[1.25] italic text-justify w-[20rem]">Our mission is to harness the power of artificial intelligence to solve complex problems and enhance human experiences. We are committed to advancing technology and making it accessible to everyone.</p>
     </div>
   </div>
   <div className="font-bold text-[2rem] uppercase">Our Team</div>
   <div className="grid grid-cols-2 w-full">
-    <div className="col-span-1 w-full flex flex-col items-center">
+    <div className="border-[1px] border-blue-500 bg-slate-900 rounded-2xl col-span-1 w-[30rem] py-7 flex flex-col items-center">
       <div className="avatar">
         <div className="border-[3px] border-blue-500 rounded-full w-[20rem] h-[20rem] overflow-hidden">
           <img src="/images/suluck.jpg" />
@@ -34,7 +34,7 @@ function About (){
         </p>
       </div>
     </div>
-    <div className="col-span-1 w-full flex flex-col items-center">
+    <div className="border-[1px] border-blue-500 bg-slate-900 rounded-2xl col-span-1 w-[30rem] py-7 flex flex-col items-center">
       <div className="avatar">
         <div className="border-[3px] border-blue-500 rounded-full w-[20rem] h-[20rem] overflow-hidden">
           <img src="/images/suluck.jpg" />

@@ -19,3 +19,7 @@
 body {
   @apply text-white;
 }
+.main-shelf-container {
+  width: calc(100% - 4rem);
+  @apply relative float-right;
+}

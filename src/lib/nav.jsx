@@ -39,10 +39,10 @@ const NavBar
     }, []);
     return (
       <nav id="upper-navbar" className="fixed top-0 flex items-center gap-20 shadow-xl h-14 w-full z-[4]">
-        <div className='flex ms-4 me-[35rem] text-white font-bold uppercase text-xl cursor-pointer'>
+        <div className='flex ms-4 me-[35rem] font-bold uppercase text-xl cursor-pointer'>
           Chat with Ai
         </div>
-        <a href='#about' id='about-btn' className='duration-300 shadow-xl w-20 h-8 border-[2px] border-white rounded-2xl font-bold uppercase text-center text-white hover:text-blue-400 hover:border-blue-400'>About</a>
+        <a href='#about' id='about-btn' className='duration-300 shadow-xl w-20 h-8 border-[2px] rounded-2xl font-bold uppercase text-center hover:text-blue-400 hover:border-blue-400'>About</a>
         <button 
         onClick={()=>{setTextMode(true),setImageMode(false)}}
         className={`shadow-xl w-20 h-8 border-[2px] rounded-2xl font-bold uppercase ${textMode ? "text-blue-400 border-blue-400":"hover:text-blue-400 hover:border-blue-400"}`}>
@@ -53,7 +53,7 @@ const NavBar
         className={`shadow-xl w-20 h-8 border-[2px] rounded-2xl font-bold uppercase ${imageMode ? "text-blue-400 border-blue-400":"hover:text-blue-400 hover:border-blue-400"}`}>
           Image
         </button>
-        <div className='flex justify-end items-end font-bold text-white ms-[12rem]'>
+        <div className='flex justify-end items-end font-bold text-red-500 ms-[12rem]'>
           The API session will expire in{" "}
           {countDown.days > 0 ? countDown.days + " days " : ""}
           {countDown.hours >= 0 ? countDown.hours + " hr " : ""}
