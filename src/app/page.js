@@ -52,7 +52,7 @@ function Homepage() {
     };
   }, []);
   return (
-    <div className="">
+    <div className="flex flex-col items-center">
       <div
         className="absolute top-0 w-[100%] h-[50rem]"
         style={{
@@ -63,23 +63,23 @@ function Homepage() {
       >
         <div className="w-full h-full bg-gradient-to-b from-transparent from-60% to-slate-800"></div>
       </div>
-      <div className="container flex flex-col mt-[3.5rem] mx-[14rem] relative z-[3]">
+      <div className="container flex flex-col mt-[3.5rem] px-[5rem] relative z-[3]">
         <div className="flex">
           <div className="flex flex-col justify-center items-start h-[50rem] w-full">
             <div className="flex flex-col gap-3">
-              <h1 className="text-[3rem] font-bold">Feeling Lonely? </h1>
-              <p className="font-semibold text-[1.2rem]">Chat with AI is all you need.</p>
+              <h1 className="text-[2.5rem] font-bold">Feeling Lonely? </h1>
+              <p className="font-semibold text-[1rem]">Chat with AI is all you need.</p>
             </div>
             <div className="flex flex-col gap-3 ps-10">
-              <h1 className="text-[3rem] font-bold">Need Some Help? </h1>
-              <p className="font-semibold text-[1.2rem]">Chat with AI is here to help.</p>
+              <h1 className="text-[2.5rem] font-bold">Need Some Help? </h1>
+              <p className="font-semibold text-[1rem]">Chat with AI is here to help.</p>
             </div>
             <div className="flex flex-col gap-3 ps-20">
-              <h1 className="text-[3rem] font-bold">Want creativity? </h1>
-              <p className="font-semibold text-[1.2rem]">Chat with AI makes it happen.</p>
+              <h1 className="text-[2.5rem] font-bold">Want creativity? </h1>
+              <p className="font-semibold text-[1rem]">Chat with AI makes it happen.</p>
             </div>
           </div>
-          <div className="flex flex-col p-20 w-full">
+          <div className="flex flex-col justify-center p-5 w-full">
             <div className="flex gap-x-3">
               <input
                 type="text"
@@ -95,7 +95,7 @@ function Homepage() {
                 }}
               />
               <button className="pe-4">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
 

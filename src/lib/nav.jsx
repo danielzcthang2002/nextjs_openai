@@ -38,8 +38,8 @@ const NavBar
       return () => clearInterval(intervalId);
     }, []);
     return (
-      <nav id="upper-navbar" className="fixed top-0 flex items-center gap-20 shadow-xl h-14 w-full z-[4]">
-        <div className='flex ms-4 me-[35rem] font-bold uppercase text-xl cursor-pointer'>
+      <nav id="upper-navbar" className="fixed top-0 flex justify-evenly items-center gap-20 shadow-xl h-14 w-full z-[4] px-20">
+        <div className='flex ms-4 font-bold uppercase text-xl w-[10rem] cursor-pointer text-blue-600'>
           Chat with Ai
         </div>
         <a href='#about' id='about-btn' className='duration-300 shadow-xl w-20 h-8 border-[2px] rounded-2xl font-bold uppercase text-center hover:text-blue-400 hover:border-blue-400'>About</a>
@@ -53,13 +53,13 @@ const NavBar
         className={`shadow-xl w-20 h-8 border-[2px] rounded-2xl font-bold uppercase ${imageMode ? "text-blue-400 border-blue-400":"hover:text-blue-400 hover:border-blue-400"}`}>
           Image
         </button>
-        <div className='flex justify-end items-end font-bold text-red-500 ms-[12rem]'>
+        {/* <div className='flex justify-end items-end font-bold text-red-500 ms-[12rem]'>
           The API session will expire in{" "}
           {countDown.days > 0 ? countDown.days + " days " : ""}
           {countDown.hours >= 0 ? countDown.hours + " hr " : ""}
           {countDown.minutes >= 0 ? countDown.minutes + " min " : ""}
           {countDown.seconds >= 0 ? countDown.seconds + " sec " : ""}
-        </div>
+        </div> */}
       </nav>
     )
   }
