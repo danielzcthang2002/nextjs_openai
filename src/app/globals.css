@@ -23,3 +23,18 @@ body {
   width: calc(100% - 4rem);
   @apply relative float-right;
 }
+/* Webkit (Safari/Chrome) */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+/* Webkit (Safari/Chrome) - Track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Set the background color of the track */
+}
+
+/* Webkit (Safari/Chrome) - Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Set the color of the scrollbar handle */
+  border-radius: 4px; /* Round the corners of the scrollbar handle */
+}

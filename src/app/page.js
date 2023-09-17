@@ -84,7 +84,7 @@ function Homepage() {
               <textarea
                 type="text"
                 placeholder="Search..."
-                className="bg-slate-700 bg-opacity-70 w-full min-h-[1rem] h-auto outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
+                className="bg-slate-700 bg-opacity-70 w-full min-h-[3.5rem] overflow-y-scroll h-auto outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
                 onFocus={() => {
                   // Add logic here to show/hide the search content
                   document.getElementById("search-content").style.display = "block";
