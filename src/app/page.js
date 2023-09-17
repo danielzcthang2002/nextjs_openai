@@ -63,7 +63,7 @@ function Homepage() {
       >
         <div className="w-full h-full bg-gradient-to-b from-transparent from-60% to-slate-800"></div>
       </div>
-      <div className="container flex flex-col mt-[3.5rem] px-[5rem] relative z-[3]">
+      <div className="container flex flex-col mt-[3.5rem] relative z-[3]">
         <div className="flex">
           <div className="flex flex-col justify-center items-start h-[50rem] w-full">
             <div className="flex flex-col gap-3">
@@ -81,10 +81,10 @@ function Homepage() {
           </div>
           <div className="flex flex-col justify-center p-5 w-full">
             <div className="flex gap-x-3">
-              <input
+              <textarea
                 type="text"
                 placeholder="Search..."
-                className="bg-slate-700 bg-opacity-70 w-full min-h-[3rem] outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
+                className="bg-slate-700 bg-opacity-70 w-full min-h-[1rem] h-auto outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
                 onFocus={() => {
                   // Add logic here to show/hide the search content
                   document.getElementById("search-content").style.display = "block";
