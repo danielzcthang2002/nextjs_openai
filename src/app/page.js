@@ -31,7 +31,7 @@ function Homepage() {
         $("#upper-navbar").removeClass("!bg-slate-800 shadow-lg");
       }
 
-      if (scroll > 30) {
+      if (scroll > 260) {
         $('#about-btn').addClass("text-blue-400 border-blue-400");
       } else {
         $('#about-btn').removeClass("text-blue-400 border-blue-400");
