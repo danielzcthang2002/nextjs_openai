@@ -4,20 +4,80 @@
 import { useEffect, useState } from "react";
 import $ from 'jquery';
 import About from "@/lib/about";
+import OpenAI from "openai";
 
 
 function Homepage() {
-  // const openai = new OpenAI({
-  //   apiKey: process.env.OPENAI_API_KEY,
-  //   dangerouslyAllowBrowser: true,
-  // });
+  const [searchKeys, setSearchKeys] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
-  // const chatCompletion = openai.chat.completions.create({
-  //   messages: [{ role: "user", content: "Say this is a test" }],
-  //   model: "gpt-3.5-turbo",
-  // });
-  // console.log(chatCompletion);
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+    dangerouslyAllowBrowser: true,
+  });
 
+  const onHandleSearchChange =(e) =>{
+    console.log(e.target.value);
+    setSearchKeys(e.target.value);
+  }
+
+  const handleSearch = () => {
+    setSearchKeys("");
+    setSearchResult([]);
+    var temp = [];
+    console.log(searchKeys);
+    const chatCompletion = openai.chat.completions.create({
+      messages: [{ role: "user", content: searchKeys }],
+      stream: true,
+      model: "gpt-3.5-turbo",
+    }).then(async (res) => {
+      for await (const chunck of res) {
+        console.log(chunck.choices[0].delta.content);
+        var result = chunck.choices[0].delta.content;
+        temp.push(result);
+        if(result != null && result != ""){
+          setSearchResult(temp);
+        }
+        
+      }
+    });
+  }
+  useEffect(() => {
+
+  }, []);
+
+  function timeDifference(end_time) {
+    const startDate = new Date(); // Current time
+    const endDate = new Date(end_time);
+
+    // Calculate the time difference in milliseconds
+    const timeDiff = endDate - startDate;
+
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    // console.log("days", days);
+
+    return { days, hours, minutes, seconds };
+  }
+
+  const [countDown, setCountDown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const future = "2023-12-16T00:00:00";
+      const count = timeDifference(future);
+      // console.log(count);
+      setCountDown(count);
+    }, 1000);
+
+    // Cleanup: Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +125,15 @@ function Homepage() {
       </div>
       <div className="container flex flex-col mt-[3.5rem] relative z-[3]">
         <div className="flex">
-          <div className="flex flex-col justify-center items-start h-[50rem] w-full">
+
+          <div className="flex flex-col justify-start items-start h-[50rem] w-full">
+            <div className='flex justify-start items-start font-bold text-red-500 mt-[1rem] mb-[10rem]'>
+              The API session will expire in{" "}
+              {countDown.days > 0 ? countDown.days + " days " : ""}
+              {countDown.hours >= 0 ? countDown.hours + " hr " : ""}
+              {countDown.minutes >= 0 ? countDown.minutes + " min " : ""}
+              {countDown.seconds >= 0 ? countDown.seconds + " sec " : ""}
+            </div>
             <div className="flex flex-col gap-3">
               <h1 className="text-[2.5rem] font-bold">Feeling Lonely? </h1>
               <p className="font-semibold text-[1rem]">Chat with AI is all you need.</p>
@@ -84,23 +152,27 @@ function Homepage() {
               <textarea
                 type="text"
                 placeholder="Search..."
+                value={searchKeys}
+                onChange={onHandleSearchChange}
                 className="bg-slate-700 bg-opacity-70 w-full min-h-[3.5rem] overflow-y-scroll h-auto outline-none border-[2px] rounded-2xl p-3 placeholder-white placeholder-co focus:border-blue-500 font-bold"
-                onFocus={() => {
-                  // Add logic here to show/hide the search content
-                  document.getElementById("search-content").style.display = "block";
-                }}
-                onBlur={() => {
-                  // Add logic here to show/hide the search content
-                  document.getElementById("search-content").style.display = "none";
-                }}
+                // onFocus={() => {
+                //   // Add logic here to show/hide the search content
+                //   document.getElementById("search-content").style.display = "block";
+                // }}
+                // onBlur={() => {
+                //   // Add logic here to show/hide the search content
+                //   document.getElementById("search-content").style.display = "none";
+                // }}
               />
-              <button className="pe-4">
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <button className="pe-4" onClick={()=>handleSearch()}>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
 
-            <div id="search-content" className="w-full h-[30rem] rounded-xl bg-slate-700 bg-opacity-75 my-4 overflow-y-hidden">
-
+            <div id="search-content" style={{ whiteSpace: 'pre-line' }} className="w-full h-auto rounded-xl bg-slate-700 bg-opacity-75 my-4 overflow-y-hidden p-5">
+              {searchResult.map((r)=>{
+                return r;
+              })}
             </div>
           </div>
         </div>

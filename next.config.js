@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env:{
-    // OPENAI_API_KEY: "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",
-    OPENAI_API_KEY: "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",
+    OPENAI_API_KEY: "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",
+    // OPENAI_API_KEY: "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",
+    // OPENAI_API_KEY: "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",
   }
 }
 
