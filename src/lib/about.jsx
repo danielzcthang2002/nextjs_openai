@@ -23,7 +23,7 @@ function About() {
         <div className="border-[1px] border-blue-500 bg-slate-900 rounded-2xl col-span-1 w-full py-7 flex flex-col items-center">
           <div className="avatar">
             <div className="border-[3px] border-blue-500 rounded-full w-[12rem] h-[12rem] overflow-hidden">
-              <img src="/images/suluck.jpg" />
+              <img src="/images/daniel.jpg" />
             </div>
           </div>
           <div className="flex flex-col w-[22rem] p-5">

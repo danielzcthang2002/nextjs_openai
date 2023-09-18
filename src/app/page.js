@@ -33,7 +33,7 @@ function Homepage() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const future = "2023-12-16T00:00:00";
+      const future = "2024-01-01T00:00:00";
       const count = timeDifference(future);
       // console.log(count);
       setCountDown(count);
@@ -92,7 +92,7 @@ function Homepage() {
 
           <div className="flex flex-col justify-start items-start h-[50rem] w-full">
             <div className='flex justify-start items-start font-bold text-red-500 mt-[1rem] mb-[10rem]'>
-              The API session will expire in{" "}
+              The API token will expire in{" "}
               {countDown.days > 0 ? countDown.days + " days " : ""}
               {countDown.hours >= 0 ? countDown.hours + " hr " : ""}
               {countDown.minutes >= 0 ? countDown.minutes + " min " : ""}
